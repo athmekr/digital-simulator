@@ -1,0 +1,10 @@
+.post-create-card {
+  max-width: 100%;
+  margin: auto;
+}
+
+.post-create-form-field,
+textarea {
+  width: 100%;
+}
+
