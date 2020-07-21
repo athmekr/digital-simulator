@@ -9,12 +9,13 @@ export class PostCreateComponent implements OnInit {
 
   constructor() { }
 
-  enteredValue = '';
+  enteredTitle = '';
+  enteredContent = '';
+
   newPost = 'No Content';
 
   onAddPost(){
-
-    this.newPost =  this.enteredValue;
+    const post = {title: this.enteredTitle, content: this.enteredContent};
   }
 
   ngOnInit(): void {
