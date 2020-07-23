@@ -2,7 +2,13 @@
   <form (submit)="onAddPost(postForm)" #postForm="ngForm">
     <mat-form-field>
       <mat-label>Add a title</mat-label>
-      <input matInput type="text" name="title" ngModel required #title="ngModel">
+      <input
+            matInput
+            type="text"
+            name="title"
+            ngModel
+            required
+            #title="ngModel">
       <mat-error *ngIf="title.invalid">Please enter a title</mat-error>
     </mat-form-field>
     <br>
