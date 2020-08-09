@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const Post = require('./models/post');
-
+// test comment commit
 const app = express();
 
 mongoose.connect('mongodb+srv://thanos:TRuUtEDejPXE0432@cluster0.60cyg.mongodb.net/digital-simulator?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
