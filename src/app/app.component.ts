@@ -8,7 +8,7 @@ import { Post } from './posts/post.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  //title = 'digital-simulator';
+  title = 'digital-simulator';
   storedPosts: Post[] = [];
 
   onPostAdded(post){
