@@ -6,7 +6,7 @@
             matInput
             type="text"
             name="title"
-            [ngModel]="post.title"
+            [ngModel]="post?.title"
             required
             #title="ngModel">
       <mat-error *ngIf="title.invalid">Please enter a title</mat-error>
@@ -18,7 +18,7 @@
         matInput
         rows="4"
         name="content"
-        [ngModel]="post.content"
+        [ngModel]="post?.content"
         required
         #content="ngModel">
       </textarea>
