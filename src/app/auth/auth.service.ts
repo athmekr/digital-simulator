@@ -3,17 +3,29 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { AuthData } from './auth-data.model';
+import { Subject } from 'rxjs';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 //import { response } from '../../../backend/app';
 
 @Injectable({providedIn: 'root'})
 
 export class AuthService {
   private token: string;
+  private isAuthenticated = false;
+  private authStatusListener = new Subject<boolean>();
 
   constructor(private http: HttpClient) {}
 
   getToken(){
     return this.token;
+  }
+
+  getStatusListener() {
+    return this.authStatusListener.asObservable();
+  }
+
+  getIsAuth() {
+    return this.isAuthenticated;
   }
 
   createUser(email: string, password: string){
@@ -36,6 +48,10 @@ export class AuthService {
       .subscribe(response => {
         const token = response.token;
         this.token = token;
+        if (token) {
+          this.isAuthenticated = true;
+          this.authStatusListener.next(true);
+        }
       });
   }
 }
