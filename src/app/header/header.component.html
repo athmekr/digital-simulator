@@ -13,7 +13,7 @@
     <a *ngIf="userIsAuthenticated"  mat-button routerLink="/create">New Post</a>
     <a *ngIf="!userIsAuthenticated" mat-button routerLink="/login">Login</a>
     <a *ngIf="!userIsAuthenticated" mat-raised-button routerLink="/signup" color="accent">Signup</a>
-    <button *ngIf="userIsAuthenticated" mat-raised-button color="accent">Signout</button>
+    <button *ngIf="userIsAuthenticated" mat-raised-button (click)="onLogout()" color="accent">Signout</button>
 
 
     <!-- <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/athmekr" title="Twitter">
