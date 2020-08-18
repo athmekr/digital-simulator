@@ -11,6 +11,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 export class AuthService {
   private token: string;
+  private tokenTimer: any;
   private isAuthenticated = false;
   private authStatusListener = new Subject<boolean>();
 
@@ -44,11 +45,15 @@ export class AuthService {
       email: email,
       password: password
     };
-    this.http.post<{token: string}>('http://localhost:3000/api/user/login', AuthData)
+    this.http.post<{token: string, expiresIn: number}>('http://localhost:3000/api/user/login', AuthData)
       .subscribe(response => {
         const token = response.token;
         this.token = token;
         if (token) {
+          const expiresInDuration = response.expiresIn;
+          this.tokenTimer = setTimeout(() => {
+            this.logout();
+          }, expiresInDuration * 1000);
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
           this.router.navigate(['/']);
@@ -61,5 +66,6 @@ export class AuthService {
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
     this.router.navigate(['/']);
+    clearTimeout(this.tokenTimer);
   }
 }
