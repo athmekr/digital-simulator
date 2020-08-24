@@ -61,7 +61,8 @@ router.put('/:id', checkAuth, multer({storage: storage}).single("image"), (req, 
     _id: req.body.id,
     title: req.body.title,
     content: req.body.content,
-    imagePath: imagePath
+    imagePath: imagePath,
+    creator: req.userData.userId
     //imagePath: url + "/images/" + req.file.filename
 
   });
