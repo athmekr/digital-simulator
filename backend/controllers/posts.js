@@ -69,16 +69,16 @@ exports.getPosts = (req, res, next) => {
     })
     .then(countDocuments => {
       res.status(200).json({
-      message: 'Posts fetched successfully!',
-      posts: fetchedPosts,
-      maxPosts: countDocuments
+        message: 'Posts fetched successfully!',
+        posts: fetchedPosts,
+        maxPosts: countDocuments
+      });
     })
-    .catch(err => {
+    .catch(error => {
       res.status(500).json({
         message: "Fetching posts failed!"
       });
     });
-  });
 }
 
 exports.getPost = (req, res, next) => {
