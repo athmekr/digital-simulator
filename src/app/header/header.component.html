@@ -11,8 +11,8 @@
 
     <a mat-button routerLink="/">My Posts</a>
     <a *ngIf="userIsAuthenticated"  mat-button routerLink="/create">New Post</a>
-    <a *ngIf="!userIsAuthenticated" mat-button routerLink="/login">Login</a>
-    <a *ngIf="!userIsAuthenticated" mat-raised-button routerLink="/signup" color="accent">Signup</a>
+    <a *ngIf="!userIsAuthenticated" mat-button routerLink="/auth/login">Login</a>
+    <a *ngIf="!userIsAuthenticated" mat-raised-button routerLink="/auth/signup" color="accent">Signup</a>
     <button *ngIf="userIsAuthenticated" mat-raised-button (click)="onLogout()" color="accent">Logout</button>
 
 
