@@ -9,17 +9,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    MatInputModule,
-    MatCardModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatExpansionModule,
-    MatProgressSpinnerModule,
-    MatPaginatorModule,
-    MatDialogModule
-  ],
+  // we can remove imports and will be done automatically by angular
   exports: [
     MatInputModule,
     MatCardModule,
@@ -29,7 +19,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatDialogModule
-  ],
-  providers: [],
+  ]
 })
 export class AngularMaterialModule {}
