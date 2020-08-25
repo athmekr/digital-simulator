@@ -2,10 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+import { environment } from "../../environments/environment";
 import { AuthData } from './auth-data.model';
 import { Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 //import { response } from '../../../backend/app';
+
+const BACKEND_URL = environment.API_URL + '/user/';
 
 @Injectable({providedIn: 'root'})
 
@@ -40,7 +43,7 @@ export class AuthService {
       password: password
     };
     return this.http
-    .post('http://localhost:3000/api/user/signup', AuthData)
+    .post(BACKEND_URL + '/signup', AuthData)
     .subscribe(() => {
       this.router.navigate(['/']);
     }, error => {
@@ -54,7 +57,7 @@ export class AuthService {
       email: email,
       password: password
     };
-    this.http.post<{token: string, expiresIn: number, userId: string}>('http://localhost:3000/api/user/login', AuthData)
+    this.http.post<{token: string, expiresIn: number, userId: string}>(BACKEND_URL + '/login', AuthData)
       .subscribe(response => {
         const token = response.token;
         this.token = token;
